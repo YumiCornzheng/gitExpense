@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+//MMVM模式的viewModel必须是class而不是struct
 class Expense: ObservableObject{
     @Published
     var expenseItems = [
@@ -14,5 +16,13 @@ class Expense: ObservableObject{
         ExpenseItem(name: "aitmed测温枪", type: "医疗设备", price: "$78"),
         ExpenseItem(name: "aitmed体重秤", type: "生活用品", price: "$123")
     ]
+    
+    func addItem(item: ExpenseItem){
+        expenseItems.append( item )
+    }
+    
+    func deleteItem(indexSet: IndexSet){
+        expenseItems.remove(atOffsets: indexSet)
+    }
     
 }
